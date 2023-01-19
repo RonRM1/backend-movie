@@ -12,7 +12,9 @@ router.use("/", indexRouter);
 router.use("/users", usersRouter);
 
 //movies
-router.use("/character", moviesRouter)//esteeeee
+router.use("/movies", moviesRouter)//esteeeee
+
+
 
 // auth
 router.use("/auth", authRouter);
