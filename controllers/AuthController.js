@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 const AuthController = {};
 
 AuthController.register = async (req, res) => {
-   console.log(req.body);
 
    try {
       const { name, email, password } = req.body;

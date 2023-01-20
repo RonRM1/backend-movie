@@ -35,5 +35,3 @@ db()
   .catch((error) => {
     console.log("Error Connecting to mongoDB", error);
   });
-
-  

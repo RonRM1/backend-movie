@@ -9,9 +9,10 @@ import isSuperAdmin from "../middelwares/isSuperAdmin.js";
 import verifyToken from "../middelwares/verifyToken.js";
 
 /* GET users listing. */
-router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
-//router.get("/", UserController.getAll); 
+router.get("/",  UserController.getAll);
+router.get("/:id", UserController.get);
+router.put("/:id",  UserController.update);
+router.delete("/:id",  UserController.delete);
 // router.patch("/users/:user_id/rent/:movie_id")
-
 
 export default router;
