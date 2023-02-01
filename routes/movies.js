@@ -8,7 +8,8 @@ import verifyToken from "../middelwares/verifyToken.js";
 
 /* GET users listing. */
 //router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
-router.get("/", MoviesController.getAll);
-router.get("/:id", MoviesController.getById);
+router.get("/", verifyToken, MoviesController.getAll);
+router.get("/:id", verifyToken, MoviesController.get);
+router.post("/:id/rent", verifyToken, MoviesController.rent);
 
 export default router;

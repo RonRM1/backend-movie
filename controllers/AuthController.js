@@ -41,7 +41,6 @@ AuthController.register = async (req, res) => {
 };
 
 AuthController.login = async (req, res) => {
-   console.log(req.headers);
 
    try {
       const { email, password } = req.body;

@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import MovieRental from "../models/MovieRental.js";
 import { hashSync } from "bcrypt";
 
 const UserController = {};
@@ -25,7 +26,7 @@ UserController.get = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = await User.findOne({ _id: id });
+    const user = await User.findById(id);
 
     return res.status(200).json({
       success: true,
@@ -93,6 +94,30 @@ UserController.update = async (req, res) => {
       success: false,
       message: "Error updating  user",
       error: error?.message || error,
+    });
+  }
+};
+
+UserController.getRentalMovies = async (req, res) => {
+  try {
+
+    const { id } = req.params;
+    const userMovies = await MovieRental.find({ user_id: id });
+
+    // Antes (Usuario de la sesión)
+    // const { id } = req.user_id;
+    // const userMovies = await MovieRental.find({ user_id: id });
+
+    return res.status(200).json({
+      success: true,
+      message: "Get user rental movies retrieved succsessfully",
+      results: userMovies,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error retrieving movie",
+      error: error.message,
     });
   }
 };

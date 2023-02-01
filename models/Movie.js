@@ -16,6 +16,6 @@ const MoviesSchema = new Schema(
   }
 );
 
-const Movies = model("Movies", MoviesSchema);
+const Movie = model("Movie", MoviesSchema);
 
-export default Movies;
+export default Movie;
