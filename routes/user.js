@@ -10,8 +10,10 @@ import verifyToken from "../middelwares/verifyToken.js";
 
 /* GET users listing. */
 router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
-//router.get("/", UserController.getAll); 
-// router.patch("/users/:user_id/rent/:movie_id")
+router.get("/:id", verifyToken, isSuperAdmin, UserController.get);
+router.put("/:id", verifyToken, isSuperAdmin, UserController.update);
+router.delete("/:id", verifyToken, isSuperAdmin, UserController.delete);
+router.post("/:id/movies", verifyToken, UserController.getRentalMovies);
 
 
 export default router;
