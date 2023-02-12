@@ -26,14 +26,14 @@ MoviesController.rent = async (req, res) => {
     const userId = req.user_id;
     const movieId = req.params.id;
 
-    const { price } = req.body;
+    
 
     const movieRental = {
       user_id: userId,
       movie_id: movieId,
       date: new Date(),
-      price: price,
     };
+    console.log(movieRental)
 
     await MovieRental.create(movieRental);
 
@@ -54,6 +54,25 @@ MoviesController.get = async (req, res) => {
   try {
     const { id } = req.params;
     const movie = await Movie.findById(id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Get movie retrieved succsessfully",
+      results: movie,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error retrieving movie",
+      error: error.message,
+    });
+  }
+};
+
+MoviesController.getRented = async (req, res) => {
+  try {
+    const userId = req.user_id;
+    const movie = await Movie.find({user_id});
 
     return res.status(200).json({
       success: true,

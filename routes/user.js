@@ -13,7 +13,7 @@ router.get("/", verifyToken, isSuperAdmin, UserController.getAll);
 router.get("/:id", verifyToken, isSuperAdmin, UserController.get);
 router.put("/:id", verifyToken, isSuperAdmin, UserController.update);
 router.delete("/:id", verifyToken, isSuperAdmin, UserController.delete);
-router.post("/:id/movies", verifyToken, UserController.getRentalMovies);
+router.get("/:id/movies", verifyToken, UserController.getRentalMovies);
 
 
 export default router;
